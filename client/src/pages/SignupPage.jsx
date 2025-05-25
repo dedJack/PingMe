@@ -82,19 +82,19 @@ const SignupPage = () => {
               </div>
 
               {/* Subheading */}
-              <h5 className="text-sm sm:text-base mb-10 font-medium text-gray-400">
+              <h5 className="text-sm sm:text-base mb-10 font-medium ">
                 Get started with your free account
               </h5>
             </div>
 
             <label
               htmlFor="fullName"
-              className="block mb-2 font-medium text-gray-200"
+              className="block mb-2 font-medium "
             >
               Name
             </label>
             <div className="flex items-center border-b-2 border-gray-300 focus-within:border-blue-950 mb-6">
-              <User className="size-5 text-gray-500 mr-2" />
+              <User className="size-5   mr-2" />
               <input
                 type="text"
                 id="fullName"
@@ -108,12 +108,12 @@ const SignupPage = () => {
 
             <label
               htmlFor="email"
-              className="block mb-2 font-medium text-gray-200"
+              className="block mb-2 font-medium "
             >
               Email
             </label>
             <div className="flex items-center border-b-2 border-gray-300 focus-within:border-blue-950 mb-6">
-              <Mail className="size-5 text-gray-500 mr-2" />
+              <Mail className="size-5   mr-2" />
               <input
                 type="email"
                 id="email"
@@ -127,12 +127,12 @@ const SignupPage = () => {
 
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-200 mb-1"
+              className="block text-sm font-medium  mb-1"
             >
               Password
             </label>
             <div className="flex items-center border-b-2 border-gray-300 focus-within:border-blue-950 mb-6">
-              <KeyRound className="size-5 text-gray-500 mr-2" />
+              <KeyRound className="size-5   mr-2" />
               <input
                 type={showPassword ? "text" : "password"}
                 id="password"
@@ -144,12 +144,12 @@ const SignupPage = () => {
               />
               {showPassword ? (
                 <EyeClosed
-                  className="size-5 text-gray-500 mr-4"
+                  className="size-5   mr-4"
                   onClick={() => setShowPassword(false)}
                 />
               ) : (
                 <Eye
-                  className="size-5 text-gray-500 mr-4"
+                  className="size-5   mr-4"
                   onClick={() => setShowPassword(true)}
                 />
               )}
@@ -167,7 +167,7 @@ const SignupPage = () => {
                 "Create Account"
               )}
             </button>
-            <p className="text-sm text-center sm:text-base mt-5 font-medium text-gray-400">
+            <p className="text-sm text-center sm:text-base mt-5 font-medium ">
               Already have an account ?{" "}
               <Link className="underline" to={"/login"}>
                 login
@@ -188,31 +188,31 @@ const SignupPage = () => {
                 <div className="timeline-start bg-white dark:bg-gray-800 text-sm sm:text-sm text-gray-800 dark:text-gray-600 font-medium p-4 rounded shadow-md">
                   Hey! How have you been?
                 </div>
-                <hr className="border-blue-500" />
+                <hr className=" border-blue-900" />
               </li>
               <li>
-                <hr className="border-blue-500" />
+                <hr className=" border-blue-900" />
                 <div className="timeline-end bg-white dark:bg-gray-800 text-sm sm:text-sm text-gray-800 dark:text-gray-600 font-medium p-4 rounded shadow-md">
                   I’m good, thanks! Just been busy with work lately. You?
                 </div>
-                <hr className="border-blue-500" />
+                <hr className=" border-blue-900" />
               </li>
               <li>
-                <hr className="border-blue-500" />
+                <hr className=" border-blue-900" />
                 <div className="timeline-start bg-white dark:bg-gray-800 text-sm sm:text-sm text-gray-800 dark:text-gray-600 font-medium p-4 rounded shadow-md">
                    Want to grab coffee this weekend?
                 </div>
-                <hr className="border-blue-500" />
+                <hr className=" border-blue-900" />
               </li>
               <li>
-                <hr className="border-blue-500" />
+                <hr className=" border-blue-900" />
                 <div className="timeline-end bg-white dark:bg-gray-800 text-sm sm:text-sm text-gray-800 dark:text-gray-600 font-medium p-4 rounded shadow-md">
                   Sure! Saturday or Sunday?
                 </div>
-                <hr className="border-blue-500" />
+                <hr className=" border-blue-900" />
               </li>
               <li>
-                <hr className="border-blue-500" />
+                <hr className=" border-blue-900" />
                 <div className="timeline-start bg-white dark:bg-gray-800 text-sm sm:text-sm text-gray-800 dark:text-gray-600 font-medium p-4 rounded shadow-md">
                   Sure! Saturday or Sunday?
                 </div>

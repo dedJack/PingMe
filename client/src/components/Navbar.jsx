@@ -20,8 +20,9 @@ const Navbar = () => {
         {authUser ? (
           <div className="flex items-center space-x-6">
             <button className="flex items-center gap-2 text-white hover:text-gray-300 font-medium">
-              <Settings className="w-5 h-5" />
-              <Link to={"/settings"}>Settings</Link>
+              <Link to={"/settings"} className="flex flex-row items-center">
+              <Settings className="w-5 h-5 mr-1" />
+              Settings</Link>
             </button>
               <button
                 className="flex items-center gap-2 text-white hover:text-gray-300 font-medium"
@@ -42,8 +43,9 @@ const Navbar = () => {
           </div>
         ) : (
           <button className="flex items-center gap-2 text-white hover:text-gray-300 font-medium">
-            <Settings className="w-5 h-5" />
-            <Link to={"/settings"}>Settings</Link>
+            <Link to={"/settings"} className="flex flex-row items-center">
+            <Settings className="w-5 h-5 mr-1" />
+            Settings</Link>
           </button>
         )}
       </nav>

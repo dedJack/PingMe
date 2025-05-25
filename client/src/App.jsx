@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import {Toaster} from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
 import Navbar from "./components/Navbar";
 import Homepage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
+import ThemeApplier from './components/ThemeApplier'
 import { useAuthStore } from "./store/useAuthStore";
+import { useThemeStore } from "./store/useThemeStore";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { theme } = useThemeStore();
 
   useEffect(() => {
     checkAuth();
@@ -18,7 +21,7 @@ const App = () => {
 
   //loader when user is checked
   if (isCheckingAuth) {
-    console.log("loading");
+    // console.log("loading");
     return (
       <>
         <span className="loading loading-ring loading-xl"></span>
@@ -27,6 +30,7 @@ const App = () => {
   }
   return (
     <div>
+      <ThemeApplier />
       <Navbar />
       <Routes>
         <Route
@@ -50,5 +54,3 @@ const App = () => {
 };
 
 export default App;
-
-

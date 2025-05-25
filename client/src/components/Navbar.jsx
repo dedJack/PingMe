@@ -21,13 +21,15 @@ const Navbar = () => {
           <div className="flex items-center space-x-6">
             <button className="flex items-center gap-2 text-white hover:text-gray-300 font-medium">
               <Settings className="w-5 h-5" />
-              Settings
+              <Link to={"/settings"}>Settings</Link>
             </button>
               <button
                 className="flex items-center gap-2 text-white hover:text-gray-300 font-medium"
                 onClick={() => setProfileModel(true)}
               >
-                <User className="w-5 h-5" />Profile
+                {/* <User className="w-5 h-5" /> */}
+                <img className="rounded-full  w-[30px] h-[30px]" src={authUser.profilePic|| '/avatar.jpg'} />
+                Profile
               </button>
               {profileModel && <ProfilePage isOpen={profileModel} onClose={() => setProfileModel(false)} />}
             <button
@@ -41,7 +43,7 @@ const Navbar = () => {
         ) : (
           <button className="flex items-center gap-2 text-white hover:text-gray-300 font-medium">
             <Settings className="w-5 h-5" />
-            Settings
+            <Link to={"/settings"}>Settings</Link>
           </button>
         )}
       </nav>

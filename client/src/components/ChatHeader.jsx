@@ -1,12 +1,12 @@
 import { ChevronLeft } from "lucide-react";
 import { useChatStore } from "../store/useChatStore";
 
-const ChatHeader = () => {
+const ChatHeader = ({onBack}) => {
   const { selectedUser, setSelectedUser } = useChatStore();
 
   return (
     <div className="p-2 border-b border-gray-700 flex items-center">
-      <button className="mr-2" onClick={() => setSelectedUser(null)}>
+      <button className="mr-2" onClick={() => {setSelectedUser(null); onBack();}}>
         <ChevronLeft className="size-6" />
       </button>
       <img

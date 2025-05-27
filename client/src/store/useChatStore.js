@@ -4,12 +4,11 @@ import { toast } from "react-hot-toast";
 
 // const {authUser} = useAuthStore();
 export const useChatStore = create((set, get) => ({
-    message: [],
+    messages: [],
     users: [],
     selectedUser: null,
     isUserLoading: false,
     isMessageLoading: false,
-    isMessageSending: false,
 
     getUser: async () => {
         set({ isUserLoading: true });
@@ -24,12 +23,13 @@ export const useChatStore = create((set, get) => ({
             set({ isUserLoading: false });
         }
     },
+    
 
     getSingleUserMessage: async (id) => {
         set({ isMessageLoading: true });
         try {
             const res = await axiosInstance.get(`/message/${id}`)
-            set({ message: res.data })
+            set({ messages: res.data})
         } catch (e) {
             toast.error(e.response.data.message);
             console.log("Error in getSingleUserMessage store", e)
@@ -39,21 +39,18 @@ export const useChatStore = create((set, get) => ({
     },
 
     sendMessages: async (messageData) => {
-        const {selectedUser, message} = get()
-        set({ isMessageSending: true });
+        const {selectedUser, messages} = get()
         try {
             const res = await axiosInstance.post(`/message/sendMessage/${selectedUser._id}`, messageData)
-            set({message:[...message,res.data]});
+            set({messages:[...messages,res.data]});
+            console.log(messages)
             toast.success("message sent")
-            set({ isMessageSending: false });
         } catch (e) {
             toast.error(e.response.data.message);
             console.log("Error in sendMessages store", e)
-        } finally {
-            set({ isMessageSending: false });
         }
     },
 
     //setting the selectedUser using set.
-    setSelectedUser: (user) => set({ selectedUser: user }),
+    setSelectedUser: (selectedUser) => set({ selectedUser}),
 }))

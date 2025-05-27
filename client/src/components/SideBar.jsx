@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { useChatStore } from "../store/useChatStore";
 import SideBarSkeleton from "../skeletons/SideBarSkeleton";
+import { useAuthStore } from "../store/useAuthStore";
 
 function SideBar({ onSelectChat }) {
   const { selectedUser, users, isUserLoading, setSelectedUser, getUser } =
     useChatStore();
+
+  const { onlineUsers } = useAuthStore();
 
   useEffect(() => {
     getUser();
@@ -36,21 +39,31 @@ function SideBar({ onSelectChat }) {
           }}
         >
           <div className="flex items-center">
-            {/* Profile Image */}
-            <img
-              className="rounded-full w-[30px] h-[30px]"
-              src={user.profilePic ? user.profilePic : "./avatar.jpg"}
-              alt="Profile"
-            />
+            {/* Profile Image with status indicator */}
+            <div className="relative">
+              <img
+                className="rounded-full w-[30px] h-[30px]"
+                src={user.profilePic ? user.profilePic : "./avatar.jpg"}
+                alt="Profile"
+              />
+              <div
+                className={`absolute top-0 left-6 w-[10px] h-[10px] rounded-full  ${onlineUsers.includes(user._id) ? "bg-red-600 border border-zinc-100" : ""}`}
+              ></div>
+            </div>
 
             {/* Name and Status */}
             <div className="ml-4">
               <div className="text-lg font-semibold">{user.fullName}</div>
-              <div className="hidden lg:block text-sm text-gray-500">
-                offline
+              <div
+                className={`hidden lg:block text-sm text-${
+                  onlineUsers.includes(user._id) ? "green" : "gray"
+                }-500`}
+              >
+                {onlineUsers.includes(user._id) ? "online" : "offline"}
               </div>
             </div>
           </div>
+
           {/* Show if the user is online or offline */}
         </div>
       ))}

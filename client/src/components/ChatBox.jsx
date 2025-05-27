@@ -32,7 +32,7 @@ function ChatBox({ onBack }) {
     <div className="h-full flex flex-col">
       {selectedUser ? (
         <>
-          <ChatHeader onBack={onBack}/>
+          <ChatHeader onBack={onBack} />
           <div className="flex-1 overflow-y-auto space-y-4 p-4">
             {messages.map((message) => (
               <div
@@ -89,7 +89,7 @@ function ChatBox({ onBack }) {
       ) : (
         // Placeholder message when no user is selected
         <div className="flex flex-col h-full justify-center items-center">
-          <MessageCircleMore className="size-1/4 text-gray-500" />
+          <MessageCircleMore className="size-1/4 text-gray-500 animate-bounceY" />
           <div className="mt-2 text-gray-500">
             Your chats with your friends appear here
           </div>

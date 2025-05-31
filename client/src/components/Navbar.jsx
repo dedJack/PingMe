@@ -32,6 +32,7 @@ const Navbar = () => {
             <img
               className="rounded-full  w-[30px] h-[30px]"
               src={authUser.profilePic || "./avatar.jpg"}
+              alt="pic"
             />
             Profile
           </button>

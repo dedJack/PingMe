@@ -80,10 +80,10 @@ const ChatInput = () => {
         <input
           type="text"
           name="text"
-          id="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Type here"
+          autoComplete="off"
           className="input input-ghost flex-1 focus:outline-none text-white"
         />
 

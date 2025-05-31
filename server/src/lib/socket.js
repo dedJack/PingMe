@@ -13,6 +13,11 @@ const io = new Server(httpServer, {
     }
 });
 
+//get reciever socketId.
+export const getRecieverSocketId = (userId) => {
+    return userSocketMap[userId];
+}
+
 //used to store online Users.
 const userSocketMap = {}; //{userId: socketId}
 

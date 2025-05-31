@@ -7,8 +7,14 @@ import ChatInput from "./ChatInput";
 import { MessageCircleMore } from "lucide-react";
 
 function ChatBox({ onBack }) {
-  const { selectedUser, getSingleUserMessage, messages, isMessageLoading } =
-    useChatStore();
+  const {
+    selectedUser,
+    getSingleUserMessage,
+    messages,
+    isMessageLoading,
+    subscribeToMessage,
+    UnSubscribeToMessage,
+  } = useChatStore();
   const { authUser } = useAuthStore();
 
   const messagesEndRef = useRef(null);
@@ -16,9 +22,19 @@ function ChatBox({ onBack }) {
   // useEffect to load the messages when selectedUser changes
   useEffect(() => {
     if (selectedUser?._id) {
-      getSingleUserMessage(selectedUser._id);
+      getSingleUserMessage(selectedUser._id); // fetch from DB
+      subscribeToMessage(); // setup socket listener
+
+      return () => {
+        UnSubscribeToMessage(); // clean up on unmount/change
+      };
     }
-  }, [selectedUser?._id, getSingleUserMessage]);
+  }, [
+    selectedUser?._id,
+    getSingleUserMessage,
+    subscribeToMessage,
+    UnSubscribeToMessage,
+  ]);
 
   // useEffect to scroll to the bottom of the messages whenever messages change
   useEffect(() => {
@@ -36,7 +52,7 @@ function ChatBox({ onBack }) {
           <div className="flex-1 overflow-y-auto space-y-4 p-4">
             {messages.map((message) => (
               <div
-                key={message._id} // Unique key for each message
+                key={message._id}
                 className={`chat ${
                   message.senderId === authUser._id ? "chat-end" : "chat-start"
                 }`}
@@ -88,7 +104,7 @@ function ChatBox({ onBack }) {
         </>
       ) : (
         // Placeholder message when no user is selected
-        <div className="flex flex-col h-full justify-center items-center">
+        <div className="flex flex-col h-full justify-center md:hidden sm:hidden items-center">
           <MessageCircleMore className="size-1/4 text-gray-500 animate-bounceY" />
           <div className="mt-2 text-gray-500">
             Your chats with your friends appear here

@@ -42,10 +42,9 @@ const ProfilePage = ({ isOpen, onClose }) => {
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-md bg-gray-600 shadow-lg z-50 transform transition-transform duration-500 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
+        className={`fixed top-0 right-0 h-full w-full max-w-md bg-gray-600 shadow-lg z-50 transform transition-transform duration-700 ease-in-out ${
+    isOpen ? "translate-x-0" : "translate-x-full"
+  }`}>
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b">
           <h2 className="text-lg font-semibold">Profile</h2>

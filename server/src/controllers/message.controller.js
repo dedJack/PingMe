@@ -2,6 +2,7 @@ import Message from "../models/Message.model.js";
 import User from "../models/User.model.js";
 import mongoose from 'mongoose';
 import cloudinary from "../lib/cloudinary.js"; // Assuming this path is correct
+import { getRecieverSocketId, io} from "../lib/socket.js";
 
 export const getUserForSidebar = async (req, res) => {
   try {
@@ -86,8 +87,12 @@ export const sendMessage = async (req, res) => {
 
     await newMessage.save();
 
-    // TODO: Implement real-time functionality here using Socket.io
+    //Real-time functionality here using Socket.io
     // For example, emit the new message to the relevant users via a socket.
+    const recieverSocketId = getRecieverSocketId(receiverId);
+    if(recieverSocketId){
+      io.to(recieverSocketId).emit("newMessage", newMessage);
+    }
 
     return res.status(201).json(newMessage);
   } catch (e) {

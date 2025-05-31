@@ -4,16 +4,14 @@ import ChatBox from "../components/ChatBox";
 import SideBar from "../components/SideBar";
 
 const HomePage = () => {
-  const { selectedUser, users, getSingleUserMessage, getUser } = useChatStore();
-
-
   const [showSidebar, setShowSidebar] = useState(true); // For mobile view toggle
 
   return (
     <div className="flex items-center justify-center h-screen">
-     <div className="flex w-full max-w-7xl  shadow-lg rounded-lg overflow-hidden
-               h-[90vh] ">
-
+      <div
+        className="flex w-full max-w-7xl  shadow-lg rounded-lg overflow-hidden
+               h-full "
+      >
         {/* Sidebar */}
         <div
           className={`

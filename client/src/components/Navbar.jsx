@@ -10,6 +10,7 @@ const Navbar = () => {
 
   return (
     <div>
+      
       <nav className="bg-blue-950 shadow px-6 py-4 my-5 mx-3 rounded-full bg-neutral outline-none gap-3 flex items-center justify-between">
         {/* Left Side: App Name */}
         {/* Full name for md and up */}
@@ -23,6 +24,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Side: App features */}
+        {authUser && 
         <div className="flex items-center space-x-6 ">
           <button
             className="flex items-center gap-2 text-white hover:text-gray-300 font-medium"
@@ -49,7 +51,7 @@ const Navbar = () => {
             <LogOut className="w-5 h-5" />
             Logout
           </button>
-        </div>
+        </div>}
       </nav>
     </div>
   );

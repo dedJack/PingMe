@@ -104,7 +104,7 @@ function ChatBox({ onBack }) {
         </>
       ) : (
         // Placeholder message when no user is selected
-        <div className="flex flex-col h-full justify-center md:hidden sm:hidden items-center">
+        <div className="hidden lg:flex flex-col h-full justify-center items-center">
           <MessageCircleMore className="size-1/4 text-gray-500 animate-bounceY" />
           <div className="mt-2 text-gray-500">
             Your chats with your friends appear here

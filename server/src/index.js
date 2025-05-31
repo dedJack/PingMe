@@ -25,13 +25,13 @@ app.use('/api/message', MessageRoutes);
 
 
 // show dist file when the app is in production
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, '../client/dist')))
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname, '../client/dist')))
 
-    app.get("*",(req, res)=>{
-        res.sendFile(path.join(__dirname,"../client","dist","index.html"));
-    })
-}
+//     app.get("*",(req, res)=>{
+//         res.sendFile(path.join(__dirname,"../client","dist","index.html"));
+//     })
+// }
 
 httpServer.listen(PORT, () => {
     console.log("Server is running on port: ", PORT);
